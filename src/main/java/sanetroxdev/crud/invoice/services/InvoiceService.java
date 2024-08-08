@@ -10,10 +10,7 @@ import sanetroxdev.crud.invoice.models.InvoiceEntity;
 import sanetroxdev.crud.invoice.repository.InvoiceRepository;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,6 +58,7 @@ public class InvoiceService {
 
         // Limitar el número de contactos a MAX_CONTACTS (5)
         if (updatedContacts.size() > MAX_CONTACTS) {
+            updatedContacts.sort(Comparator.comparingLong(ContactEntity::getId).reversed());
             updatedContacts = updatedContacts.subList(0, MAX_CONTACTS);
         }
 
