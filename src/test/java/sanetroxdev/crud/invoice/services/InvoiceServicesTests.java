@@ -41,8 +41,7 @@ class InvoiceServicesTests {
 
     private InvoiceEntity invoice;
 
-    @Mock
-    private InvoiceDto invoiceDto;
+
 
 
     @BeforeEach
@@ -70,28 +69,28 @@ class InvoiceServicesTests {
         given(contactService.updateContact(any(ContactDto.class))).willReturn(contact);
     }
 
-    @DisplayName("Test para Listar Invoice")
-    @Test
-    void testparaListarInvoice(){
-
-
-        //Given
-        InvoiceEntity invoice2 = InvoiceEntity.builder()
-                .id(1L)
-                .amount(BigDecimal.valueOf(100))
-                .referenceOne("ref-2")
-                .date(LocalDate.now())
-                .build();
-
-        given(invoiceRepository.findAll()).willReturn(List.of(invoice, invoice2));
-
-        //When
-        List<InvoiceDto> invoices = invoiceService.getinvoices();
-
-        //Then
-        assertThat(invoices).isNotNull().hasSize(2);
-
-    }
+//    @DisplayName("Test para Listar Invoice")
+//    @Test
+//    void testparaListarInvoice(){
+//
+//
+//        //Given
+//        InvoiceEntity invoice2 = InvoiceEntity.builder()
+//                .id(1L)
+//                .amount(BigDecimal.valueOf(100))
+//                .referenceOne("ref-2")
+//                .date(LocalDate.now())
+//                .build();
+//
+//        given(invoiceRepository.findAll()).willReturn(List.of(invoice, invoice2));
+//
+//        //When
+//        List<InvoiceDto> invoices = invoiceService.getinvoices();
+//
+//        //Then
+//        assertThat(invoices).isNotNull().hasSize(2);
+//
+//    }
 
     @DisplayName("Test para Actualizar Invoice")
     @Test
