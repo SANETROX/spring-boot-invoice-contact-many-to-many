@@ -46,8 +46,8 @@ public class InvoiceService {
         // Procesar contactos del request
         for (ContactDto contactDto : invoiceDto.getContacts()) {
             String key = contactDto.getDocumentNumber() + "-" + contactDto.getDocumentType();
-            ContactEntity contactEntity = existingContactsMap.remove(key);
-            contactEntity = contactService.updateContact(contactDto);
+            existingContactsMap.remove(key);
+            ContactEntity contactEntity = contactService.updateContact(contactDto);
             updatedContacts.add(contactEntity);
         }
 
@@ -70,4 +70,9 @@ public class InvoiceService {
 
     }
 
+    public List<InvoiceDto> getinvoices() {
+
+        List<InvoiceEntity> invoices = invoiceRepository.findAll();
+        return InvoiceMapper.mapper.toInvoiceDtoList(invoices);
+    }
 }

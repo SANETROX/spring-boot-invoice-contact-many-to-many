@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface InvoiceRepository extends JpaRepository<InvoiceEntity, Long> {
     @Query("SELECT i FROM InvoiceEntity i WHERE i.referenceOne = ?1")
     Optional<InvoiceEntity> findByReferenceOne(String referenceOne);
+
 }
