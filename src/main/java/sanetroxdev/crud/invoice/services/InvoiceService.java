@@ -1,6 +1,6 @@
 package sanetroxdev.crud.invoice.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import sanetroxdev.crud.invoice.dtos.ContactDto;
 import sanetroxdev.crud.invoice.dtos.InvoiceDto;
@@ -16,13 +16,18 @@ import java.util.stream.Collectors;
 @Service
 public class InvoiceService {
 
-    @Autowired
+
     private InvoiceRepository invoiceRepository;
 
-    @Autowired
+
     private ContactService contactService;
 
     private static final int MAX_CONTACTS = 5;
+
+    public InvoiceService(InvoiceRepository invoiceRepository, ContactService contactService) {
+        this.invoiceRepository = invoiceRepository;
+        this.contactService = contactService;
+    }
 
     public InvoiceDto updateInvoice(InvoiceDto invoiceDto) {
         Optional<InvoiceEntity> invoiceExisting = invoiceRepository.findByReferenceOne(invoiceDto.getReferenceOne());

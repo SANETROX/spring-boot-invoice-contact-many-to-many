@@ -2,7 +2,6 @@ package sanetroxdev.crud.invoice.controllers;
 
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sanetroxdev.crud.invoice.dtos.InvoiceDto;
@@ -16,8 +15,12 @@ import java.util.List;
 public class InvoiceController {
 
 
-    @Autowired
+
     private InvoiceService invoiceService;
+
+    public InvoiceController(InvoiceService invoiceService) {
+        this.invoiceService = invoiceService;
+    }
 
 
     @GetMapping("/listar/invoices")

@@ -1,7 +1,7 @@
 package sanetroxdev.crud.invoice.services;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import sanetroxdev.crud.invoice.dtos.ContactDto;
 import sanetroxdev.crud.invoice.models.ContactEntity;
@@ -12,8 +12,12 @@ import java.util.Optional;
 @Service
 public class ContactService {
 
-    @Autowired
+
     private ContactRepository contactRepository;
+
+    public ContactService(ContactRepository contactRepository) {
+        this.contactRepository = contactRepository;
+    }
 
     public ContactEntity updateContact(ContactDto contactDto) {
 
